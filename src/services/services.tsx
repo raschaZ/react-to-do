@@ -73,44 +73,6 @@ async function displayTodoList() {
     });
     tasks = await response.json();
     return tasks;
-    // const taskList = document.getElementById("taskList")!;
-    // taskList.innerHTML = "";
-
-    // tasks.forEach((item: any) => {
-    //   const li = document.createElement("li");
-
-    //   const id = document.createElement("p");
-    //   id.style.visibility = "hidden";
-    //   id.innerText = item.id;
-    //   li.appendChild(id);
-    //   const span = document.createElement("span");
-    //   span.innerText = item.title;
-    //   li.appendChild(span);
-
-    //   const completeButton = document.createElement("button");
-    //   completeButton.innerText = "Complete";
-    //   completeButton.id = `completeButton-${item.id}`;
-    //   completeButton.className = `complete`;
-    //   if (!item.completed) {
-    //     completeButton.addEventListener("click", () =>
-    //       completeTodoItem(item.id)
-    //     );
-    //   }
-    //   li.appendChild(completeButton);
-
-    //   const deleteButton = document.createElement("button");
-    //   deleteButton.innerText = "Delete";
-    //   deleteButton.id = `deleteButton-${item.id}`;
-    //   deleteButton.className = `delete`;
-    //   deleteButton.addEventListener("click", () => deleteTodoItem(item.id));
-    //   li.appendChild(deleteButton);
-
-    //   if (item.completed) {
-    //     li.classList.add("complete");
-    //   }
-
-    //   taskList.appendChild(li);
-    // });
   } catch (error) {
     console.log(error);
   }

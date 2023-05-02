@@ -78,7 +78,3 @@ body {
 .remove-task-button:hover {
   cursor: pointer;
 }
-
-Item {
-  color: rgb(112, 9, 9);
-}
