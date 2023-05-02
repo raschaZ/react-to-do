@@ -11,7 +11,7 @@ type ItemProps = {
 };
 
 const Item = ({ todo }: ItemProps) => {
-  return <div>{todo.title}</div>;
+  return <div className="item">{todo.title}</div>;
 };
 
 export default Item;

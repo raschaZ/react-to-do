@@ -78,3 +78,7 @@ body {
 .remove-task-button:hover {
   cursor: pointer;
 }
+
+div {
+  font-size: 20px;
+}

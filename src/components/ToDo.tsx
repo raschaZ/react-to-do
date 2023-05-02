@@ -5,6 +5,7 @@ import { getTasks } from "../redux/actions/todo";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Item from "./Item";
+import AddItem from "./AddItem";
 
 export function ToDo() {
   const useAppDispatch = () => useDispatch<AppDispatch>();
@@ -24,6 +25,7 @@ export function ToDo() {
           <Item key={item.id} todo={item} />
         ))}
       </div>
+      <AddItem />
     </>
   );
 }

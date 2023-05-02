@@ -2,6 +2,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import { ToDo } from "./components/ToDo";
+import "./App.css";
 
 function App() {
   return (
