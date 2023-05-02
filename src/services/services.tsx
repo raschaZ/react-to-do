@@ -77,4 +77,4 @@ async function displayTodoList() {
     console.log(error);
   }
 }
-export { displayTodoList, addTodoItem };
+export { displayTodoList, addTodoItem, completeTodoItem, deleteTodoItem };
