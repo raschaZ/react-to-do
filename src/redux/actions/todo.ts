@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { displayTodoList } from "../../services/services";
+import { useAppDispatch } from "../../app/hooks";
+import { useEffect } from "react";
 
 // get tasks
 export const getTasks = createAsyncThunk(
@@ -40,14 +41,13 @@ export const createTask = createAsyncThunk(
           Accept: "application/json",
         },
         body: JSON.stringify({
-          title: value.title,
-          description: value.title,
-          completed: value.completed,
+          title: value,
+          description: value,
+          completed: false,
         }),
       })
         .then((response) => response.json())
         .catch((error) => console.error(error));
-      displayTodoList();
     } catch (error: any) {
       return rejectWithValue(error);
     }

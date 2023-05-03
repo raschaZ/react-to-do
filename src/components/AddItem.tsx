@@ -1,15 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../app/store";
-import { createTask } from "../redux/actions/todo";
+import { createTask, getTasks } from "../redux/actions/todo";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-type Todo = {
-  title: string;
-  completed: boolean;
-};
 
-const AddItem = (description: Todo) => {
+const AddItem = () => {
   const [value, setValue] = useState("");
 
   const useAppDispatch = () => useDispatch<AppDispatch>();
@@ -18,13 +14,13 @@ const AddItem = (description: Todo) => {
   const onSubmit = (event: any) => {
     event.preventDefault();
 
-    if (value.trim().length === 0) {
+    if (value?.trim().length === 0) {
       alert("Enter a task before adding !!");
       setValue("");
       return;
     }
 
-    dispatch(createTask(description));
+    dispatch(createTask(value.trim()));
 
     setValue("");
   };
@@ -42,7 +38,7 @@ const AddItem = (description: Todo) => {
       ></input>
       <button className="task-button" onClick={onSubmit}>
         Add
-      </button>{" "}
+      </button>
     </>
   );
 };

@@ -19,13 +19,13 @@ export function ToDo() {
 
   return (
     <>
-      <Typography mb={3}>All todo tasks:{todo.todo.length} </Typography>
+      <Typography mb={3}>All todo tasks:{todo?.todo?.length} </Typography>
+      <AddItem />
       <div>
-        {todo.todo.map((item: any) => (
+        {todo?.todo?.map((item: any) => (
           <Item key={item.id} todo={item} />
         ))}
       </div>
-      <AddItem />
     </>
   );
 }
