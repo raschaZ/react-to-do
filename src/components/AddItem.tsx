@@ -29,16 +29,18 @@ const AddItem = () => {
 
   return (
     <>
-      <input
-        type="text"
-        className="task-input"
-        placeholder="Add task"
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-      ></input>
-      <button className="task-button" onClick={onSubmit}>
-        Add
-      </button>
+      <div className="content">
+        <input
+          type="text"
+          className="task-input"
+          placeholder="Add task"
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+        ></input>
+        <button className="task-button" onClick={onSubmit}>
+          Add
+        </button>
+      </div>
     </>
   );
 };

@@ -10,16 +10,16 @@ import AddItem from "./AddItem";
 export function ToDo() {
   const useAppDispatch = () => useDispatch<AppDispatch>();
   const dispatch = useAppDispatch();
+  const todo = useSelector((state: any) => state.todoSlice);
+
+  let count = todo?.todo?.length;
   useEffect(() => {
     dispatch(getTasks());
-  }, []);
-
-  const todo = useSelector((state: any) => state.todoSlice);
-  console.log(todo.todo);
+  }, [count]);
 
   return (
     <>
-      <Typography mb={3}>All todo tasks:{todo?.todo?.length} </Typography>
+      <Typography mb={3}>All todo tasks:{count} </Typography>
       <AddItem />
       <div>
         {todo?.todo?.map((item: any) => (

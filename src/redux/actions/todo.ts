@@ -1,6 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { useAppDispatch } from "../../app/hooks";
-import { useEffect } from "react";
 
 // get tasks
 export const getTasks = createAsyncThunk(
@@ -45,6 +43,50 @@ export const createTask = createAsyncThunk(
           description: value,
           completed: false,
         }),
+      })
+        .then((response) => response.json())
+        .catch((error) => console.error(error));
+    } catch (error: any) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+// delete task
+export const deleteTask = createAsyncThunk(
+  "tasks",
+  async (id: any, { rejectWithValue }) => {
+    try {
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzAyMjYxMCwiZXhwIjoxNjgzNjI3NDEwfQ.5RspmxdIe1jAfY2vU0vm0zhogJCUaqpGsD4VsZnhGbc";
+      await fetch(`http://localhost:8010/tasks/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }).catch((error) => console.error(error));
+    } catch (error: any) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+// complete task
+export const completeTask = createAsyncThunk(
+  "tasks",
+  async (id: any, { rejectWithValue }) => {
+    try {
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzAyMjYxMCwiZXhwIjoxNjgzNjI3NDEwfQ.5RspmxdIe1jAfY2vU0vm0zhogJCUaqpGsD4VsZnhGbc";
+      await fetch(`http://localhost:8010/tasks/${id}/complete`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
       })
         .then((response) => response.json())
         .catch((error) => console.error(error));

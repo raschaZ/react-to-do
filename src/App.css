@@ -65,7 +65,14 @@ body {
   justify-content: space-between;
   padding: 8px 40px;
 }
-
+.complete-task-button {
+  background-color: #0d6105;
+  height: 32px;
+  color: white;
+  border-radius: 4px;
+  width: 70px;
+  border: none;
+}
 .remove-task-button {
   background-color: #ac3b61;
   height: 32px;
@@ -73,6 +80,7 @@ body {
   border-radius: 4px;
   width: 70px;
   border: none;
+  margin: 5px;
 }
 
 .remove-task-button:hover {
@@ -81,4 +89,12 @@ body {
 
 div {
   font-size: 20px;
+}
+div.complete {
+  text-decoration: line-through;
+}
+
+div.content {
+  display: flex;
+  justify-content: space-between;
 }
