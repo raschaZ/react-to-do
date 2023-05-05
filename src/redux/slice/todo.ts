@@ -23,12 +23,12 @@ const initialState: todoState = {
   success: false,
 };
 
-export const todoSlice = createSlice({
+export const todoSlice: any = createSlice({
   name: "todoSlice",
   initialState,
   reducers: {
     settodoAdd: (state, action) => {
-      state.todoAdded = action.payload;
+      state.todo = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -50,7 +50,10 @@ export const todoSlice = createSlice({
       state.error = null;
     });
     builder.addCase(createTask.fulfilled, (state, { payload }: any) => {
-      state.todo = payload;
+      state.todoAdded = payload;
+      state.todo.push(payload);
+      console.log(payload);
+
       state.loading = false;
       state.success = true;
     });
@@ -63,7 +66,9 @@ export const todoSlice = createSlice({
       state.error = null;
     });
     builder.addCase(deleteTask.fulfilled, (state, { payload }: any) => {
-      state.todo = payload;
+      state.todo = state.todo.filter(
+        (task: any) => task.id !== payload.task.id
+      );
       state.loading = false;
       state.success = true;
     });
@@ -76,7 +81,13 @@ export const todoSlice = createSlice({
       state.error = null;
     });
     builder.addCase(completeTask.fulfilled, (state, { payload }: any) => {
-      state.todo = payload;
+      state.todo = state.todo.map((task: any) => {
+        if (task.id === payload.task.id) {
+          return payload.task;
+        } else {
+          return task;
+        }
+      });
       state.loading = false;
       state.success = true;
     });
