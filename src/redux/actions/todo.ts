@@ -1,23 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { clientApi } from "../../services/services";
 
 // get tasks
 export const getTasks = createAsyncThunk(
   "getTasks",
   async (_, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem("token"); // set token value in local storage
-      const myHeaders = new Headers({
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      });
-      const response = await fetch("http://localhost:8010/tasks", {
-        method: "GET",
-        credentials: "include",
-        headers: myHeaders,
-      });
-      const tasks = await response.json();
-      return tasks;
+      const token = localStorage.getItem("token");
+      clientApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      const response = await clientApi.get("/tasks");
+      return response.data;
     } catch (error: any) {
       return rejectWithValue(error);
     }
@@ -28,22 +20,15 @@ export const createTask = createAsyncThunk(
   "createTask",
   async (value: any, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem("token"); // set token value in local storage
-      await fetch("http://localhost:8010/tasks", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          title: value,
-          description: value,
-          completed: false,
-        }),
-      })
-        .then((response) => response.json())
-        .catch((error) => console.error(error));
+      const token = localStorage.getItem("token");
+      clientApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      const task = {
+        title: value,
+        description: value,
+        completed: false,
+      };
+      const response = await clientApi.post("/tasks", task);
+      return response.data;
     } catch (error: any) {
       return rejectWithValue(error);
     }
@@ -55,15 +40,10 @@ export const deleteTask = createAsyncThunk(
   "deleteTask",
   async (id: any, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem("token"); // set token value in local storage
-      await fetch(`http://localhost:8010/tasks/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }).catch((error) => console.error(error));
+      const token = localStorage.getItem("token");
+      clientApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      const response = await clientApi.delete(`/tasks/${id}`);
+      return response.data;
     } catch (error: any) {
       return rejectWithValue(error);
     }
@@ -75,17 +55,10 @@ export const completeTask = createAsyncThunk(
   "completeTask",
   async (id: any, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem("token"); // set token value in local storage
-      await fetch(`http://localhost:8010/tasks/${id}/complete`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .catch((error) => console.error(error));
+      const token = localStorage.getItem("token");
+      clientApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      const response = await clientApi.put(`/tasks/${id}/complete`);
+      return response.data;
     } catch (error: any) {
       return rejectWithValue(error);
     }
