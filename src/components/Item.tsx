@@ -43,6 +43,7 @@ const Item = ({ todo }: ItemProps) => {
           <Button
             variant="contained"
             color="success"
+            size="small"
             disabled={todo.completed}
             onClick={doneTask}
           >
@@ -51,7 +52,12 @@ const Item = ({ todo }: ItemProps) => {
         </Grid>
 
         <Grid item xs={2}>
-          <Button variant="contained" color="error" onClick={removeTask}>
+          <Button
+            variant="contained"
+            color="error"
+            size="small"
+            onClick={removeTask}
+          >
             {EN.delete}
           </Button>
         </Grid>
