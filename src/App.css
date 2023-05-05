@@ -106,3 +106,7 @@ div.content {
 .todo {
   width: 160%;
 }
+.todo div {
+  font-size: 20px;
+  margin: 2;
+}
