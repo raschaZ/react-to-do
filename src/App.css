@@ -90,11 +90,19 @@ body {
 div {
   font-size: 20px;
 }
-div.complete {
+h6.complete {
   text-decoration: line-through;
 }
 
 div.content {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
+}
+
+.input {
+  width: 90%;
+}
+.todo {
+  width: 160%;
 }

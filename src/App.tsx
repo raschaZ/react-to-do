@@ -1,21 +1,26 @@
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import { ToDo } from "./components/ToDo";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
+import Home from "./components/HomeScreen";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Auth from "./components/Auth";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <Container>
-      <Typography textAlign="center" variant="h3" mt={3} mb={5}>
-        ToDo APP
-      </Typography>
-      <Grid container spacing={3} justifyContent="center">
-        <Grid item md={4}>
-          <ToDo />
-        </Grid>
-      </Grid>
-    </Container>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path="/Login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route element={<Auth />}>
+              <Route path="" element={<Home />} />
+            </Route>
+          </Route>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

@@ -1,8 +1,8 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteTask, completeTask } from "../redux/actions/todo";
 import { AppDispatch } from "../app/store";
-
+import EN from "../lang/EN.json";
+import { Button, Grid, Typography } from "@mui/material";
 type Todo = {
   id: number;
   title: string;
@@ -26,35 +26,36 @@ const Item = ({ todo }: ItemProps) => {
       dispatch(completeTask(todo.id));
     }
   };
+
   return (
     <>
-      <div className="content">
-        <div
-          className={`${todo.completed ? "complete" : "open"}`}
-          id={todo.id.toString()}
-        >
-          {todo.title}{" "}
-        </div>
-        <div>
-          <button
+      <Grid container spacing={5}>
+        <Grid item xs={6}>
+          <Typography
+            className={`${todo.completed ? "complete" : "open"}`}
+            id={todo.id.toString()}
+            variant="h6"
+          >
+            {todo.title}
+          </Typography>
+        </Grid>
+        <Grid item xs={2}>
+          <Button
+            variant="contained"
+            color="success"
             disabled={todo.completed}
-            className="complete-task-button"
-            onClick={() => {
-              doneTask();
-            }}
+            onClick={doneTask}
           >
-            Complete
-          </button>
-          <button
-            className="remove-task-button"
-            onClick={() => {
-              removeTask();
-            }}
-          >
-            Delete
-          </button>
-        </div>
-      </div>
+            {EN.complete}
+          </Button>
+        </Grid>
+
+        <Grid item xs={2}>
+          <Button variant="contained" color="error" onClick={removeTask}>
+            {EN.delete}
+          </Button>
+        </Grid>
+      </Grid>
     </>
   );
 };

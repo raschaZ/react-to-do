@@ -2,11 +2,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 // get tasks
 export const getTasks = createAsyncThunk(
-  "tasks",
+  "getTasks",
   async (_, { rejectWithValue }) => {
     try {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzAyMjYxMCwiZXhwIjoxNjgzNjI3NDEwfQ.5RspmxdIe1jAfY2vU0vm0zhogJCUaqpGsD4VsZnhGbc";
+      const token = localStorage.getItem("token"); // set token value in local storage
       const myHeaders = new Headers({
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -26,11 +25,10 @@ export const getTasks = createAsyncThunk(
 );
 // create task
 export const createTask = createAsyncThunk(
-  "tasks",
+  "createTask",
   async (value: any, { rejectWithValue }) => {
     try {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzAyMjYxMCwiZXhwIjoxNjgzNjI3NDEwfQ.5RspmxdIe1jAfY2vU0vm0zhogJCUaqpGsD4VsZnhGbc";
+      const token = localStorage.getItem("token"); // set token value in local storage
       await fetch("http://localhost:8010/tasks", {
         method: "POST",
         headers: {
@@ -54,11 +52,10 @@ export const createTask = createAsyncThunk(
 
 // delete task
 export const deleteTask = createAsyncThunk(
-  "tasks",
+  "deleteTask",
   async (id: any, { rejectWithValue }) => {
     try {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzAyMjYxMCwiZXhwIjoxNjgzNjI3NDEwfQ.5RspmxdIe1jAfY2vU0vm0zhogJCUaqpGsD4VsZnhGbc";
+      const token = localStorage.getItem("token"); // set token value in local storage
       await fetch(`http://localhost:8010/tasks/${id}`, {
         method: "DELETE",
         headers: {
@@ -75,11 +72,10 @@ export const deleteTask = createAsyncThunk(
 
 // complete task
 export const completeTask = createAsyncThunk(
-  "tasks",
+  "completeTask",
   async (id: any, { rejectWithValue }) => {
     try {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzAyMjYxMCwiZXhwIjoxNjgzNjI3NDEwfQ.5RspmxdIe1jAfY2vU0vm0zhogJCUaqpGsD4VsZnhGbc";
+      const token = localStorage.getItem("token"); // set token value in local storage
       await fetch(`http://localhost:8010/tasks/${id}/complete`, {
         method: "PUT",
         headers: {

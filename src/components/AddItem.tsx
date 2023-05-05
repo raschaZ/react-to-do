@@ -1,9 +1,11 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../app/store";
-import { createTask, getTasks } from "../redux/actions/todo";
+import { createTask } from "../redux/actions/todo";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import EN from "../lang/EN.json";
+import TextField from "@mui/material/TextField";
+import { Button, Grid } from "@mui/material";
 
 const AddItem = () => {
   const [value, setValue] = useState("");
@@ -25,22 +27,33 @@ const AddItem = () => {
     setValue("");
   };
   const todo = useSelector((state: any) => state.todoSlice);
+  const addTask = (event: any) => setValue(event.target.value);
   console.log(todo.todo);
 
   return (
     <>
-      <div className="content">
-        <input
-          type="text"
-          className="task-input"
-          placeholder="Add task"
-          value={value}
-          onChange={(event) => setValue(event.target.value)}
-        ></input>
-        <button className="task-button" onClick={onSubmit}>
-          Add
-        </button>
-      </div>
+      <Grid
+        container
+        sx={{
+          margin: 2,
+        }}
+      >
+        <Grid item xs={8}>
+          {" "}
+          <TextField
+            className="input"
+            label={EN.addtask}
+            value={value}
+            onChange={addTask}
+            size="small"
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <Button variant="contained" size="large" onClick={onSubmit}>
+            {EN.add}
+          </Button>
+        </Grid>
+      </Grid>
     </>
   );
 };

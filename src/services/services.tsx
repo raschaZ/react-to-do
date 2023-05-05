@@ -1,9 +1,5 @@
-let tasks: any;
-
 async function addTodoItem(title: string, description: string) {
-  // const token = localStorage.getItem("token"); // get token value in local storage
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzAyMjYxMCwiZXhwIjoxNjgzNjI3NDEwfQ.5RspmxdIe1jAfY2vU0vm0zhogJCUaqpGsD4VsZnhGbc";
+  const token = localStorage.getItem("token"); // get token value in local storage
   await fetch("http://localhost:8010/tasks", {
     method: "POST",
     headers: {
@@ -19,14 +15,11 @@ async function addTodoItem(title: string, description: string) {
   })
     .then((response) => response.json())
     .catch((error) => console.error(error));
-  displayTodoList();
 }
 
 // Function to mark a to-do item as completed
 async function completeTodoItem(id: number) {
-  // const token = localStorage.getItem("token"); // get token value in local storage
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzAyMjYxMCwiZXhwIjoxNjgzNjI3NDEwfQ.5RspmxdIe1jAfY2vU0vm0zhogJCUaqpGsD4VsZnhGbc";
+  const token = localStorage.getItem("token"); // get token value in local storage
   await fetch(`http://localhost:8010/tasks/${id}/complete`, {
     method: "PUT",
     headers: {
@@ -37,14 +30,11 @@ async function completeTodoItem(id: number) {
   })
     .then((response) => response.json())
     .catch((error) => console.error(error));
-  displayTodoList();
 }
 
 // Function to delete a to-do item
 async function deleteTodoItem(id: number) {
-  // const token = localStorage.getItem("token"); // get token value in local storage
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzAyMjYxMCwiZXhwIjoxNjgzNjI3NDEwfQ.5RspmxdIe1jAfY2vU0vm0zhogJCUaqpGsD4VsZnhGbc";
+  const token = localStorage.getItem("token"); // get token value in local storage
   await fetch(`http://localhost:8010/tasks/${id}`, {
     method: "DELETE",
     headers: {
@@ -53,14 +43,11 @@ async function deleteTodoItem(id: number) {
       Accept: "application/json",
     },
   }).catch((error) => console.error(error));
-  displayTodoList();
 }
 
 async function displayTodoList() {
   try {
-    // const token = localStorage.getItem("token"); // get token value in local storage
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzAyMjYxMCwiZXhwIjoxNjgzNjI3NDEwfQ.5RspmxdIe1jAfY2vU0vm0zhogJCUaqpGsD4VsZnhGbc";
+    const token = localStorage.getItem("token"); // get token value in local storage
     const myHeaders = new Headers({
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
@@ -71,7 +58,7 @@ async function displayTodoList() {
       credentials: "include",
       headers: myHeaders,
     });
-    tasks = await response.json();
+    let tasks: any = await response.json();
     return tasks;
   } catch (error) {
     console.log(error);
