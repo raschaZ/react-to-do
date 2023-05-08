@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { ToDo } from "./ToDo";
-import EN from "../lang/EN.json";
+import { EN } from "../lang/EN";
 
 const Home = () => {
   return (

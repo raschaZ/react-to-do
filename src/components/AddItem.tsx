@@ -3,7 +3,7 @@ import { AppDispatch } from "../app/store";
 import { createTask } from "../redux/actions/todo";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import EN from "../lang/EN.json";
+import { EN } from "../lang/EN";
 import TextField from "@mui/material/TextField";
 import { Button, Grid } from "@mui/material";
 
@@ -39,7 +39,7 @@ const AddItem = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <Grid item xs={12} sm={10}>
+        <Grid item>
           {" "}
           <TextField
             className="input"

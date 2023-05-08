@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { AppDispatch } from "../app/store";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/actions/auth";
-import EN from "../lang/EN.json";
+import { EN } from "../lang/EN";
 import { Button, Container, Grid, TextField, Typography } from "@mui/material";
 
 const Login = () => {

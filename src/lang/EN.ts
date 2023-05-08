@@ -1,0 +1,15 @@
+export const EN = {
+  add: "Add",
+  addtask: "Add task",
+  app_name: "ToDo APP",
+  complete: "Complete",
+  delete: "Delete",
+  email: "Email",
+  password: "Password",
+  login: "Login",
+  firstName: "First Name",
+  confirmPassword: "Confirm Password",
+  loading: "Loading...",
+  title: "All todo tasks",
+  register: "Register",
+};

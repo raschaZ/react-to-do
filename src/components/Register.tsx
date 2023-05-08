@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Spinner from "./Spinner";
 import { registerUser } from "../redux/actions/auth";
 import { AppDispatch } from "../app/store";
-import EN from "../lang/EN.json";
+import { EN } from "../lang/EN";
 import { Button, Container, TextField, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 

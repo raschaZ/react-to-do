@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { deleteTask, completeTask } from "../redux/actions/todo";
 import { AppDispatch } from "../app/store";
-import EN from "../lang/EN.json";
+import { EN } from "../lang/EN";
 import { Button, Grid, Typography } from "@mui/material";
 type Todo = {
   id: number;

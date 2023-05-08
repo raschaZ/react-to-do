@@ -1,4 +1,4 @@
-import EN from "../lang/EN.json";
+import { EN } from "../lang/EN";
 const Spinner = () => {
   return (
     <>

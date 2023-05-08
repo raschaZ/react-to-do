@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Item from "./Item";
 import AddItem from "./AddItem";
-import EN from "../lang/EN.json";
+import { EN } from "../lang/EN";
 import { Grid } from "@mui/material";
 
 export function ToDo() {
