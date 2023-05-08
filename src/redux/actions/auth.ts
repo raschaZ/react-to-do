@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { clientApi } from "../../services/services";
 
 // login
 export const login = createAsyncThunk(
@@ -7,32 +8,11 @@ export const login = createAsyncThunk(
     try {
       const email = data.email;
       const password = data.password;
-
-      const response = await fetch("http://localhost:8010/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
+      const response = await clientApi.post("/login", {
+        email: email,
+        password: password,
       });
-
-      if (response.status === 200) {
-        response
-          .json()
-          .then((data) => {
-            const token = data.token;
-            localStorage.setItem("token", token); // set token value in local storage
-          })
-          .catch((error) => {
-            console.error("There was a problem parsing the JSON data:", error);
-          });
-        console.log("Logged in successfully");
-
-        window.location.href = "/";
-        return data;
-      } else {
-        console.log(`Response status code: ${response.status}`);
-      }
+      return response.data;
     } catch (error: any) {
       return rejectWithValue(error);
     }

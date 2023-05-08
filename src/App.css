@@ -100,11 +100,8 @@ div.content {
   justify-content: space-between;
 }
 
-.input {
-  width: 90%;
-}
 .todo {
-  width: 160%;
+  width: inherit;
 }
 .todo div {
   font-size: 20px;

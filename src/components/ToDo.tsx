@@ -16,7 +16,7 @@ export function ToDo() {
   let count = todo?.todo?.length;
   useEffect(() => {
     dispatch(getTasks());
-  }, [count]);
+  }, []);
 
   return (
     <>

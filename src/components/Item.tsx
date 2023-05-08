@@ -29,8 +29,15 @@ const Item = ({ todo }: ItemProps) => {
 
   return (
     <>
-      <Grid container spacing={5}>
-        <Grid item xs={6}>
+      <Grid
+        container
+        spacing={1}
+        direction="row"
+        alignItems="center"
+        p={1}
+        justifyContent="center"
+      >
+        <Grid item xs={12} sm={6}>
           <Typography
             className={`${todo.completed ? "complete" : "open"}`}
             id={todo.id.toString()}
@@ -39,7 +46,7 @@ const Item = ({ todo }: ItemProps) => {
             {todo.title}
           </Typography>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item>
           <Button
             variant="contained"
             color="success"
@@ -51,7 +58,7 @@ const Item = ({ todo }: ItemProps) => {
           </Button>
         </Grid>
 
-        <Grid item xs={2}>
+        <Grid item>
           <Button
             variant="contained"
             color="error"

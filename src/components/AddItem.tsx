@@ -34,11 +34,12 @@ const AddItem = () => {
     <>
       <Grid
         container
-        sx={{
-          margin: 2,
-        }}
+        spacing={1}
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
       >
-        <Grid item xs={8}>
+        <Grid item xs={12} sm={10}>
           {" "}
           <TextField
             className="input"
@@ -46,9 +47,10 @@ const AddItem = () => {
             value={value}
             onChange={addTask}
             size="small"
+            fullWidth
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item>
           <Button variant="contained" size="large" onClick={onSubmit}>
             {EN.add}
           </Button>

@@ -11,12 +11,11 @@ const Home = () => {
       </Typography>
       <Grid
         container
-        rowSpacing={5}
         direction="column"
         alignItems="center"
         justifyContent="center"
       >
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={{ width: "inherit" }}>
           <ToDo />
         </Grid>
       </Grid>
